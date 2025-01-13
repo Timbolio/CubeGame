@@ -25,7 +25,7 @@ public class move : MonoBehaviour
     {
         if (!dead) 
         {
-            rb.AddForce(-speed, 0f, 0f);
+            rb.AddForce(0f, 0f, -speed);
         }
 
         if (Input.touchCount > 0) 
