@@ -17,7 +17,6 @@ public class move : MonoBehaviour
     public GameObject deadUI;
     public GameObject playerScoreGame;
     public TMP_Text playerScoreDead;
-    public GameObject player;
     public float slideFactor;
 
     private void Start()
@@ -25,6 +24,8 @@ public class move : MonoBehaviour
         dead = false;
         deadUI.SetActive(false);
         Time.timeScale = 1f;
+        playerScoreGame = GameObject.Find("Score");
+        
     }
 
     void Update()
@@ -55,7 +56,7 @@ public class move : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacle")) 
         {
             dead = true;
-            float score = Mathf.Abs(Mathf.Round(player.transform.position.z));
+            float score = Mathf.Abs(Mathf.Round(transform.position.z));
             deadUI.SetActive(true);
             playerScoreGame.SetActive(false);
             playerScoreDead.text = "Score:" + score;

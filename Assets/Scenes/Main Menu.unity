@@ -934,8 +934,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1350157588}
-  speed: 35
+  speed: 20
   deadUI: {fileID: 0}
+  playerScoreGame: {fileID: 0}
+  playerScoreDead: {fileID: 0}
   slideFactor: 0.1
 --- !u!1001 &1559380066
 PrefabInstance:
