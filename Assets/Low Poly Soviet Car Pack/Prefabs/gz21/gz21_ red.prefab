@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 4621431041584288587}
   m_Layer: 0
   m_Name: gz21_ red
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
