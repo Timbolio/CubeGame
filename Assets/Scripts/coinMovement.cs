@@ -9,7 +9,6 @@ public class coinMovement : MonoBehaviour
     public float bobbingHeight = 0.8f;
     public float bobbingSpeed = 1f;
 
-    private Vector3 startPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +19,7 @@ public class coinMovement : MonoBehaviour
     void Update()
     {
         transform.Rotate(Vector3.left * rotationSpeed * Time.deltaTime);
-        float newY = startPos.y + Mathf.Sin(Time.time * bobbingSpeed) * bobbingHeight;
+        float newY = this.transform.position.y + Mathf.Sin(Time.time * bobbingSpeed) * bobbingHeight;
         transform.position = new Vector3(transform.position.x, newY, transform.position.z);
     }
 

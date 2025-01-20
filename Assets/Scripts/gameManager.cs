@@ -20,4 +20,9 @@ public class gameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Main Menu");
     }
+
+    public void LoadShop() 
+    {
+        SceneManager.LoadScene("ShopScene");
+    }
 }

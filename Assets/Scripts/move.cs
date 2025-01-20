@@ -38,7 +38,7 @@ public class move : MonoBehaviour
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-            if (touch.position.x > (screenWidth / 2))
+            if (touch.position.x > (screenWidth / 2)) // I like the movement inverted, mmight implement option to toggle.
             {
                 rb.AddForce(45f, 0f, 0f);
             }
@@ -53,13 +53,14 @@ public class move : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Obstacle")) 
+        if (collision.gameObject.CompareTag("Obstacle")) // If object collided with is an obstacle, die.
         {
             dead = true;
             float score = Mathf.Abs(Mathf.Round(transform.position.z));
             deadUI.SetActive(true);
             playerScoreGame.SetActive(false);
             playerScoreDead.text = "Score:" + score;
+            Time.timeScale = 0f;
             
         }
     }
