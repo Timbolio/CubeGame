@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6194042618121509647}
   - component: {fileID: 5312144098807429179}
   - component: {fileID: 5607047821636738527}
+  - component: {fileID: 4656283610257514142}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -122,6 +123,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5607047821636738527}
+  rotationSpeed: 30
+  bobbingHeight: 0.8
+  bobbingSpeed: 1
 --- !u!54 &5607047821636738527
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -149,3 +153,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 14
   m_CollisionDetection: 0
+--- !u!114 &4656283610257514142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6260271920233086973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf150e1ba07088c47860287fe241f6a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 6260271920233086973}

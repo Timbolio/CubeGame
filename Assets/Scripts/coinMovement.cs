@@ -5,9 +5,9 @@ using UnityEngine;
 public class coinMovement : MonoBehaviour
 {
     public Rigidbody rb;
-    float rotationSpeed = 30f;
-    float bobbingHeight = 0.8f;
-    float bobbingSpeed = 1f;
+    public float rotationSpeed = 30f;
+    public float bobbingHeight = 0.8f;
+    public float bobbingSpeed = 1f;
 
     private Vector3 startPos;
     // Start is called before the first frame update

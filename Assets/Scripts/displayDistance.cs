@@ -8,7 +8,13 @@ using TMPro;
 public class displayDistance : MonoBehaviour
 {
     public TMP_Text m_TextMeshPro;
-    public GameObject obj;
+    GameObject obj;
+
+    public void Start() 
+    {
+        obj = GameObject.FindWithTag("Player");
+    }
+
 
     private void Update()
     {

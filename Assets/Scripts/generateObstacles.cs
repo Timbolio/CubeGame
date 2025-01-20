@@ -35,6 +35,7 @@ public class generateObstacles : MonoBehaviour
             
             Quaternion randRotQ = Quaternion.Euler(0f, 0f, 90f);
             Instantiate(coins[x], new Vector3(f, -7.8f, -45 * i - 45), randRotQ);
+            coins[x].SetActive(true);
 
         }
         /*
