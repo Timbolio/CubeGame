@@ -112,7 +112,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8202559477815207989
 Transform:
   m_ObjectHideFlags: 0
@@ -217,7 +217,6 @@ MonoBehaviour:
   deadUI: {fileID: 0}
   playerScoreGame: {fileID: 0}
   playerScoreDead: {fileID: 0}
-  player: {fileID: 7930456727842909083}
   slideFactor: 0.1
 --- !u!54 &4622370197831835243
 Rigidbody:

@@ -7,7 +7,6 @@ public class coinSystem : MonoBehaviour
     public int coins;
     public int[] prices;
     public int selectedItem;
-    public Texture[] textures;
     public GameObject[] skins;
     public int[] ownedSkins;
     public GameObject[] skinsUIUnowned;
@@ -19,6 +18,7 @@ public class coinSystem : MonoBehaviour
     {
         coins = PlayerPrefs.GetInt("coins", 0);
         selectedItem = 0;
+        skins[selectedItem].SetActive(true);
     }
 
     public void nextItem() 
@@ -27,7 +27,7 @@ public class coinSystem : MonoBehaviour
         skinsUIUnowned[selectedItem].SetActive(false);
         skinsUIOwned[selectedItem].SetActive(false);
         selectedItem++;
-        if (selectedItem > skins.Length) 
+        if (selectedItem > skins.Length - 1) 
         {
             selectedItem = 0;
         }
@@ -39,8 +39,10 @@ public class coinSystem : MonoBehaviour
         {
             skinsUIUnowned[selectedItem].SetActive(true);
         }
+        skins[selectedItem].SetActive(true);
 
-        
+
+
 
     }
 
@@ -53,7 +55,7 @@ public class coinSystem : MonoBehaviour
         selectedItem--;
         if (selectedItem < 0)
         {
-            selectedItem = skins.Length;
+            selectedItem = skins.Length - 1;
         }
         if (ownedSkins[selectedItem] == 1)
         {
