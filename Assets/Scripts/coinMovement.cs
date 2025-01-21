@@ -9,22 +9,13 @@ public class coinMovement : MonoBehaviour
     public float bobbingHeight = 0.8f;
     public float bobbingSpeed = 1f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate() // I found fixed update to provide better performance and smoother movement as it updates with each rendered frame
     {
         transform.Rotate(Vector3.left * rotationSpeed * Time.deltaTime);
-        float newY = Mathf.Sin(Time.time * bobbingSpeed) * bobbingHeight - 1f;
-        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+        float newY = Mathf.Sin(Time.time * bobbingSpeed) * bobbingHeight - 1f; // uses sin wave to "bob" coin up and down. Neat animation.
+        transform.position = new Vector3(transform.position.x, newY, transform.position.z); // updates position
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-    }
 }

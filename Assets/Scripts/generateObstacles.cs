@@ -38,13 +38,13 @@ public class generateObstacles : MonoBehaviour
         The generation method generates coins and obstacles in almost exactly the same way. For the cars, it randomly picks a car from the array obstaclesLength.
         This isnt needed for the coins as they all use the same prefab. Both create a random position on the road to spawn, and the cars generate a random orientation.
         For the instantiation, a new Vec3 passes through the rand x position, a set Y value of -1 for cars and 0 for coins (cars have larger scale) and for the Z value
-        I space the objects 45f apart by using i. the -45 stops objects spawning directly on the player on start, and the sectionsComplete is used for when generating more chunks
-        at a further distance, with each chunk generating objects for a z length of 2250. The 2250 is longer than the distance it generates for, allowing small intervals where the
-        player can collect coins. This can run infinitely.
+        I space the cars 35f apart by using i. the -120 stops objects spawning directly on the player on start, and the sectionsComplete is used for when generating more chunks
+        at a further distance, with each chunk generating objects for a z length of 2250. The 2250 is longer than the distance the cars generate for, allowing small intervals where the
+        player can collect coins safely. This can run infinitely.
          
          */
         
-        for (int i = 0; i < 50; i++) // generate cars to dodge
+        for (int i = 0; i < 50; i++) // generate cars to dodge with pool size of 50
         {
             int x = Random.Range(0, obstaclesLength);
             float f = Random.Range(-11f, -3f); // ran pos on x axis
@@ -54,7 +54,7 @@ public class generateObstacles : MonoBehaviour
 
         }
 
-        for (int i = 0; i < 50; i++) // generates coins to collect
+        for (int i = 0; i < 50; i++) // generates coins to collect with pool size of 50
         {
             int x = Random.Range(0, coinsLength);
             float f = Random.Range(-11f, -3f); // ran pos on x axis

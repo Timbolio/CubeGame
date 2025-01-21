@@ -39,7 +39,7 @@ public class move : MonoBehaviour
 
         Vector3 accelerometer = Input.acceleration;
         float tilt = accelerometer.x;
-        rb.AddForce(tilt * Time.deltaTime, 0f, 0f);
+        rb.AddForce(tilt * 20000f * Time.deltaTime, 0f, 0f);
 
 
 
