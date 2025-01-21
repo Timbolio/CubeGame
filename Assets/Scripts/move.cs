@@ -10,43 +10,54 @@ public class move : MonoBehaviour
 {
     public Rigidbody rb;
     public float speed;
-    private bool lDown;
-    private bool rDown;
-    private float screenWidth = Screen.width;
-    private bool dead = false;
+    private float screenWidth = Screen.width; // grabs width of screen regardless of device size and aspect ratio
+    private bool dead; // check if dead
     public GameObject deadUI;
-    public GameObject playerScoreGame;
-    public TMP_Text playerScoreDead;
-    public float slideFactor;
+    public GameObject playerScoreGame; // stored as GameObject as is only referenced to be enabled and disabled
+    public TMP_Text playerScoreDead; // stored as TMP_Text as text is modified to new score value
+
 
     private void Start()
     {
-        dead = false;
-        deadUI.SetActive(false);
-        Time.timeScale = 1f;
-        playerScoreGame = GameObject.Find("Score");
+        dead = false; // Player can't be dead the moment the game starts
+        deadUI.SetActive(false); // disable dead UI
+        Time.timeScale = 1f; // enable time
+        playerScoreGame = GameObject.Find("Score"); // grab reference to players score
         
     }
 
     void Update()
     {
-        if (!dead) 
+        if (!dead) // whilst not dead, move forwards
         {
             rb.velocity = new Vector3(0f, 0f, -speed);
         }
 
-        if (Input.touchCount > 0)
+
+        // TODO: Add checkbox to decide which input method to use, also test accelerometer through android studio by building as apk
+
+
+        Vector3 accelerometer = Input.acceleration;
+        float tilt = accelerometer.x;
+        rb.AddForce(tilt * Time.deltaTime, 0f, 0f);
+
+
+
+
+        if (Input.touchCount > 0) // when player touches screen
         {
             Touch touch = Input.GetTouch(0);
-            if (touch.position.x > (screenWidth / 2)) // I like the movement inverted, mmight implement option to toggle.
+            if (touch.position.x > (screenWidth / 2)) // If player touches right side, move left, if touches left side, moev right. (I like it inverted)
             {
-                rb.AddForce(45f, 0f, 0f);
+                rb.AddForce(20000f * Time.deltaTime, 0f, 0f); // applies force
             }
             else
             {
-                rb.AddForce(-45f, 0f, 0f);
+                rb.AddForce(-20000f * Time.deltaTime, 0f, 0f);
             }
         }
+
+
         
         
     }
@@ -60,9 +71,19 @@ public class move : MonoBehaviour
             deadUI.SetActive(true);
             playerScoreGame.SetActive(false);
             playerScoreDead.text = "Score:" + score;
-            Time.timeScale = 0f;
+            Invoke("stopTime", 20); // stops time 2 seconds after death, giving player time to process what happened
             
         }
+    }
+
+    void stopTime() 
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void increaseSpeed() 
+    {
+        speed = speed + 5f;
     }
 
 

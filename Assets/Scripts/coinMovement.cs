@@ -19,7 +19,7 @@ public class coinMovement : MonoBehaviour
     void Update()
     {
         transform.Rotate(Vector3.left * rotationSpeed * Time.deltaTime);
-        float newY = this.transform.position.y + Mathf.Sin(Time.time * bobbingSpeed) * bobbingHeight;
+        float newY = Mathf.Sin(Time.time * bobbingSpeed) * bobbingHeight - 1f;
         transform.position = new Vector3(transform.position.x, newY, transform.position.z);
     }
 
