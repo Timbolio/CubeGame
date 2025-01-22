@@ -167,3 +167,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   self: {fileID: 6260271920233086973}
   coinText: {fileID: 0}
+  coinAudioSource: {fileID: 0}
+  Mixer: {fileID: 0}

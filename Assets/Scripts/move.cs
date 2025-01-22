@@ -15,6 +15,7 @@ public class move : MonoBehaviour
     public GameObject deadUI;
     public GameObject playerScoreGame; // stored as GameObject as is only referenced to be enabled and disabled
     public TMP_Text playerScoreDead; // stored as TMP_Text as text is modified to new score value
+    int inputMethod;
 
 
     private void Start()
@@ -23,6 +24,7 @@ public class move : MonoBehaviour
         deadUI.SetActive(false); // disable dead UI
         Time.timeScale = 1f; // enable time
         playerScoreGame = GameObject.Find("Score"); // grab reference to players score
+        inputMethod = PlayerPrefs.GetInt("input", 1);
         
     }
 
@@ -34,28 +36,28 @@ public class move : MonoBehaviour
         }
 
 
-        // TODO: Add checkbox to decide which input method to use, also test accelerometer through android studio by building as apk
-
-
-        Vector3 accelerometer = Input.acceleration;
-        float tilt = accelerometer.x;
-        rb.AddForce(tilt * 20000f * Time.deltaTime, 0f, 0f);
-
-
-
-
-        if (Input.touchCount > 0) // when player touches screen
+        if (inputMethod == 0)
         {
-            Touch touch = Input.GetTouch(0);
-            if (touch.position.x > (screenWidth / 2)) // If player touches right side, move left, if touches left side, moev right. (I like it inverted)
+            Vector3 accelerometer = Input.acceleration;
+            float tilt = accelerometer.x;
+            rb.AddForce(tilt * 20000f * Time.deltaTime, 0f, 0f);
+        }
+        else 
+        {
+            if (Input.touchCount > 0) // when player touches screen
             {
-                rb.AddForce(20000f * Time.deltaTime, 0f, 0f); // applies force
-            }
-            else
-            {
-                rb.AddForce(-20000f * Time.deltaTime, 0f, 0f);
+                Touch touch = Input.GetTouch(0);
+                if (touch.position.x > (screenWidth / 2)) // If player touches right side, move left, if touches left side, moev right. (I like it inverted)
+                {
+                    rb.AddForce(20000f * Time.deltaTime, 0f, 0f); // applies force
+                }
+                else
+                {
+                    rb.AddForce(-20000f * Time.deltaTime, 0f, 0f);
+                }
             }
         }
+        
 
 
         
